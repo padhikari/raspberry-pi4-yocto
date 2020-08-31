@@ -50,3 +50,19 @@ uncomment following lines
 DL_DIR ?= "${TOPDIR}/downloads"
 SSTATE_DIR ?= "${TOPDIR}/sstate-cache"
 TMPDIR = "${TOPDIR}/tmp"
+
+6) build image
+$bitbake rpi-basic-image
+the build image will be in :
+YOCTO_PI/rasp4-build/tmp/deploy/images/raspberrypi4/rpi-basic-image-raspberrypi4.wic.bz2
+6) build sdk
+$bitbake rpi-basic-image -c populate_sdk
+The output will be in :
+YOCTO_PI/rasp4-build/tmp/deploy/SDK
+6a) to install SDK run below script located in SDK directory
+$sudo ./poky-glibc-x86_64-rpi-basic-image-cortexa7t2hf-neon-vfpv4-raspberrypi4-toolchain-3.1.2.sh
+The default path is /opt/poky/
+
+7) source the yocto toolchain
+ource /opt/poky/3.1.2/environment-setup-arm1176jzfshf-vfp-poky-linux-gnueabi 
+
