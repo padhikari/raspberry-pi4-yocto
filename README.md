@@ -36,9 +36,17 @@ conf/
     -bblayers.conf
     -local.conf
 
-6) add the base layers into bblayers.conf using 
+5a) add the base layers into bblayers.conf using 
 $bitbake-layers add-layer ../layers/meta-openembedded/meta-oe
 $bitbake-layers add-layer ../layers/meta-openembedded/meta-multimedia
 $bitbake-layers add-layer ../layers/meta-openembedded/meta-networking
 $bitbake-layers add-layer ../layers/meta-openembedded/meta-python
 $bitbake-layers add-layer ../layers/meta-raspberrypi
+
+5b) in the local.conf 
+MACHINE = "raspberrypi4"
+
+uncomment following lines
+DL_DIR ?= "${TOPDIR}/downloads"
+SSTATE_DIR ?= "${TOPDIR}/sstate-cache"
+TMPDIR = "${TOPDIR}/tmp"
